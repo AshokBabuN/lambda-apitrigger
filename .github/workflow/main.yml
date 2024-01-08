@@ -2,7 +2,7 @@ name: Deploy
 
 on:
     push:
-        branchs:
+        branches:
         - master
 
 jobs:
@@ -18,3 +18,10 @@ jobs:
                 CI: true
             run: 
                 npm ci
+          - name: Deploy
+            run:
+             npx ncc build index.ts
+            # zip
+            # aws cli deploy code
+
+            
