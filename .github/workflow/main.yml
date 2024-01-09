@@ -21,10 +21,10 @@ jobs:
                 node-version: "12"
           - name: Configure AWS Credentials
             uses: aws-actions/configure-aws-credentials@v1
-            with:
-              aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-              aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-              aws-region: us-east-1
+           # with:
+              # aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+              # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+              # aws-region: us-east-1 
             with:
               role-to-assume: arn:aws:iam::430856461182:role/gitgub-OpenId-connect
               role-session-name: samplerolesession
