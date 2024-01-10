@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.21",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "zip": "^1.2.0",
+    "zip-lib": "^0.7.3"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.130",
