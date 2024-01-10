@@ -1,15 +1,17 @@
+---
+
 name: Deploy
 
 on:
     push:
         branches:
         - master
-env:
-  AWS_REGION : "us-east-1"
+# env:
+  # AWS_REGION : "us-east-1"
 
-permissions:
-      id-token: write   # This is required for requesting the JWT
-      contents: read    # This is required for actions/checkout
+# permissions:
+      # id-token: write   # This is required for requesting the JWT
+      # contents: read    # This is required for actions/checkout
 
 jobs:
     deploy_lambda:
@@ -21,14 +23,14 @@ jobs:
                 node-version: "12"
           - name: Configure AWS Credentials
             uses: aws-actions/configure-aws-credentials@v1
-           # with:
-              # aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-              # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-              # aws-region: us-east-1 
             with:
-              role-to-assume: arn:aws:iam::430856461182:role/gitgub-OpenId-connect
-              role-session-name: samplerolesession
-              aws-region: ${{ env.AWS_REGION }}
+              aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+              aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+              aws-region: us-east-1
+            # with:
+              # role-to-assume: arn:aws:iam::430856461182:role/gitgub-OpenId-connect
+              # role-session-name: samplerolesession
+              # aws-region: ${{ env.AWS_REGION }}
 
           - name: npm install
             env:
@@ -41,4 +43,4 @@ jobs:
              zip -j dist.zip ./dist/*
              aws lambda update-function-code --function-name=lambda-apitrigger --zip-file=fileb://dist.zip
 
-            
+
